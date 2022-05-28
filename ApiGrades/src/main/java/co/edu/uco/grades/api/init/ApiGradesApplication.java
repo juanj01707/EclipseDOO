@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@ComponetScan(basePackages = {"co.edu.uco.grades"})
 public class ApiGradesApplication {
 
 	public static void main(String[] args) {
