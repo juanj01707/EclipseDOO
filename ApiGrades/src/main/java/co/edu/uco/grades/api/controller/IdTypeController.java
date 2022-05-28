@@ -36,7 +36,7 @@ public class IdTypeController {
 	@PostMapping
 	public ResponseEntity<Response<IdTypeDTO>> create(@RequestBody IdTypeDTO dto) {
 		
-	}
+	
 		 Validator<IdTypeDTO> validator = new CreateIdTypeValidator();
 		 List<String> messages = UtilObject.getUtilObject().getDefault(validator.validate(dto), new ArrayList<>());
 		 Response<IdTypeDTO> response = new Response<>();
@@ -46,7 +46,7 @@ public class IdTypeController {
 		 if(messages.isEmpty()) {
 			try { 
 			 IdTypeFacade facade = new IdTypeFacadeImpl();
-			 facade.create(dto);
+			 facade.create(dto);;
 			 messages.add("Id type was created succesfully!");
 			 statusCode = HttpStatus.OK;
 			 
@@ -73,6 +73,7 @@ public class IdTypeController {
 			 responseEntity = new ResponseEntity<>(response,statusCode);
 			 
 			 return responseEntity;
+ }
 	}
 	
 	@PutMapping("/{id}")
@@ -92,9 +93,45 @@ public class IdTypeController {
 	}
 	
 	@GetMapping
-	public void find() {
-		System.out.print("Estoy en consultar Todos!!");	
-	}
-
-
+	public ResponseEntity<Response<IdTypeDTO>> find() {
+		
+		 List<String> messages = new ArrayList<>();
+		 Response<IdTypeDTO> response = new Response<>();
+		 ResponseEntity<Response<IdTypeDTO>> responseEntity;
+		 HttpStatus statusCode = HttpStatus.BAD_REQUEST;
+		
+		 if(messages.isEmpty()) {
+			try { 
+			 IdTypeFacade facade = new IdTypeFacadeImpl();
+			 response.setData(facade.find(new IdTypeDTO()));
+			 messages.add("Id type were found succesfully!");
+			 statusCode = HttpStatus.OK;
+			 
+		 } catch (GradesException exception) {
+			 if (ExceptionType.TECHNICAL.equals(exception.getType())) {
+				 messages.add("there was a problem trying to register the new id type. Please, try again... ");
+				 System.err.println(exception.getLocation());
+				 System.err.println(exception.getType());
+				 System.err.println(exception.getTechnicalMessage());
+				 exception.getRootException().printStackTrace();
+			 }else {
+				 messages.add(exception.getMessage());
+				 System.err.println(exception.getLocation());
+				 System.err.println(exception.getType());
+				 System.err.println(exception.getUserMessage());
+				 exception.getRootException().printStackTrace();
+			 }
+		 } catch (Exception exception) {
+			 messages.add(
+					 "ther was an unexpected problem trying to register the new id type. Please, try again...");
+			 exception.printStackTrace();
+		 }
+			response.setMessages(messages);
+			 responseEntity = new ResponseEntity<>(response,statusCode);
+			 
+			 return responseEntity;
 }
+
+	
+
+
