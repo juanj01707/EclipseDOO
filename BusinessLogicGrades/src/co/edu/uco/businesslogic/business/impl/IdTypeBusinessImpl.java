@@ -2,8 +2,8 @@ package co.edu.uco.businesslogic.business.impl;
 
 import java.util.List;
 
-import co.edu.uco.businesslogic.business.IdTypeBusiness;
 import co.edu.uco.crosscutting.util.object.UtilObject;
+import co.edu.uco.grades.businesslogic.business.IdTypeBusiness;
 import co.edu.uco.grades.crosscutting.exception.GradesException;
 import co.edu.uco.grades.data.factory.DAOFactory;
 import co.edu.uco.grades.dto.IdTypeDTO;
