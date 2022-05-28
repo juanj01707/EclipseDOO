@@ -52,7 +52,7 @@ public class IdTypeFacadeImpl implements IdTypeFacade{
 			 throw exception;
 		 }catch(Exception exception) {
 			 daoFactory.rollbackTransaction();
-			 var message ="there was a problem trying to create the new IdType on create method in IdTypeFacadeImpl";
+			 var message ="there was a problem trying to update the new IdType on create method in IdTypeFacadeImpl";
 			 throw GradesException.buildTechnicalBusinessLogicException(message);
 		 } finally {
 			 daoFactory.closeConnection();
@@ -73,7 +73,7 @@ public class IdTypeFacadeImpl implements IdTypeFacade{
 			 throw exception;
 		 }catch(Exception exception) {
 			 daoFactory.rollbackTransaction();
-			 var message ="there was a problem trying to create the new IdType on create method in IdTypeFacadeImpl";
+			 var message ="there was a problem trying to delete the new IdType on create method in IdTypeFacadeImpl";
 			 throw GradesException.buildTechnicalBusinessLogicException(message);
 		 } finally {
 			 daoFactory.closeConnection();
@@ -91,7 +91,7 @@ public class IdTypeFacadeImpl implements IdTypeFacade{
 			 throw exception;
 		 }catch(Exception exception) {
 			 daoFactory.rollbackTransaction();
-			 var message ="there was a problem trying to create the new IdType on create method in IdTypeFacadeImpl";
+			 var message ="there was a problem trying to find the new IdType on create method in IdTypeFacadeImpl";
 			 throw GradesException.buildTechnicalBusinessLogicException(message);
 		 } finally {
 			 daoFactory.closeConnection();
