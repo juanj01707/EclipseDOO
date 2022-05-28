@@ -14,5 +14,7 @@ public interface IdTypeBusiness {
 
 	List<IdTypeDTO> find(IdTypeDTO dto);
 
+	void validateIdTypeDoesNotExistWhithSameName(IdTypeDTO dto);
+
 
 }

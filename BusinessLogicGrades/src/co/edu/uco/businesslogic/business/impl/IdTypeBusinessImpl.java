@@ -19,10 +19,29 @@ public class IdTypeBusinessImpl implements IdTypeBusiness{
 		this.daoFactory = daoFactory;
 	}
 
+	
 	@Override
 	public void create(IdTypeDTO dto) {
+		validateIdTypeDoesNotExistWhithSameName(dto);
 		daoFactory.getIdTypeDAO().create(dto);
 	}
+	
+	
+	@Override
+	public void validateIdTypeDoesNotExistWhithSameName(IdTypeDTO dto) {
+		
+		
+		IdTypeDTO dtoValidator = new IdTypeDTO();
+		dtoValidator.setName(dto.getName());
+		
+		List<IdTypeDTO> list =  daoFactory.getIdTypeDAO().find(dtoValidator);
+		
+		if (!list.isEmpty()) {
+			var message = "An Id Type With the same name alredy Exist!";
+		}
+			throw GradesException.buildBusinessLogicException(null);
+		}
+		
 
 	@Override
 	public void update(IdTypeDTO dto) {
