@@ -39,6 +39,8 @@ public class IdTypeDTO {
 	}
 	
 	
+	
+	
 	public void validateName(List<String> validationMessages){
 		
 		validationMessages = UtilObject.getUtilObject().getDefault(validationMessages, new ArrayList<>());
@@ -48,10 +50,8 @@ public class IdTypeDTO {
 			validationMessages.add("Name of id type is required!!!");
 		} else if(UtilText.getDefault(getName()).length() > 50) {
 			validationMessages.add("lenght of name of id type must be less o equals to 50 characters!!!");
-		} else if(UtilText.getDefault(getName()).matches("^[a-zA-ZñÑáÁéÉ]*$")) {
+		} else if(UtilText.getDefault(getName()).matches("^[a-zA-ZñÑáÁéÉíÍóÓúÚ ]*$")) {
 			validationMessages.add("Name of id type contais invalid characters!!!");
-		} 
-		
-		
+		}
 	}
 }
