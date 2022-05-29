@@ -26,8 +26,6 @@ public class IdTypeBusinessImpl implements IdTypeBusiness{
 		daoFactory.getIdTypeDAO().create(dto);
 	}
 	
-	
-	@Override
 	public void validateIdTypeDoesNotExistWhithSameName(IdTypeDTO dto) {
 		
 		

@@ -53,15 +53,15 @@ public class IdTypeController {
 			} catch (GradesException exception) {
 				if (ExceptionType.TECHNICAL.equals(exception.getType())) {
 					messages.add("there was a problem trying to register the new id type. Please, try again... ");
-					System.err.println(exception.getTechnicalMessage());
 					System.err.println(exception.getLocation());
 					System.err.println(exception.getType());
+					System.err.println(exception.getTechnicalMessage());
 					exception.getRootException().printStackTrace();
 				} else {
 					messages.add(exception.getMessage());
-					System.err.println(exception.getUserMessage());
 					System.err.println(exception.getLocation());
 					System.err.println(exception.getType());
+					System.err.println(exception.getUserMessage());
 					exception.getRootException().printStackTrace();
 				}
 			} catch (Exception exception) {
